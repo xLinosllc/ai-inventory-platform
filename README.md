@@ -6,8 +6,7 @@ A modern, intelligent inventory management system with plant-level segregation a
 
 ## 🚀 Live Demo
 
-**[View Live Demo →](https://your-demo-url.netlify.app)**
-
+**[[View Live Demo →](https://xlinosllc.github.io/ai-inventory-platform/demo.html)**
 ## ✨ Key Features
 
 ### 🏭 Multi-Plant Operations
