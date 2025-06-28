@@ -4,24 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Powered Inventory Platform - Live Demo</title>
-    <meta name="description" content="AI-powered inventory management platform with plant-level segregation and SAP integration">
-    <meta name="keywords" content="AI, inventory, SAP, S4HANA, commerce cloud, plant management">
-    
-    <!-- React and dependencies -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom styles -->
     <style>
-        body { 
-            margin: 0; 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
         .demo-banner {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -29,11 +24,275 @@
             text-align: center;
             font-weight: 600;
         }
-        .feature-card {
-            transition: transform 0.2s ease-in-out;
+        
+        .demo-banner a {
+            color: white;
+            text-decoration: underline;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #333;
+            color: white;
+        }
+        
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .features-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s;
+            border-left: 4px solid #667eea;
+        }
+        
         .feature-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #667eea;
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .feature-metrics {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .stats {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .insights {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .insight-panel {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+        }
+        
+        .insight-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .insight-icon {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            border-radius: 8px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .insight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .insight-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .insight-message {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .insight-confidence {
+            display: inline-block;
+            background: #e7f5e7;
+            color: #2d5a2d;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -41,289 +300,181 @@
     <!-- Demo Banner -->
     <div class="demo-banner">
         🚀 Live Demo - AI-Powered Inventory Platform | 
-        <a href="https://github.com/xLinosllc/ai-inventory-platform" class="text-white underline">View on GitHub</a>
+        <a href="https://github.com/xLinosllc/ai-inventory-platform">View on GitHub</a>
     </div>
 
-    <!-- Main App Container -->
-    <div id="root"></div>
-    
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-        const { 
-            Database, 
-            RotateCcw, 
-            AlertTriangle, 
-            CheckCircle, 
-            Clock, 
-            ArrowUpDown,
-            Settings,
-            BarChart3,
-            RefreshCw,
-            Warehouse,
-            Package,
-            TrendingUp,
-            AlertCircle,
-            Server,
-            Zap,
-            Brain,
-            Target,
-            Eye,
-            Filter,
-            Globe,
-            MapPin,
-            Lightbulb,
-            Activity,
-            PieChart,
-            LineChart,
-            ExternalLink,
-            Github,
-            Star
-        } = lucideReact;
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>AI-Powered Inventory Platform</h1>
+            <p>Intelligent inventory visibility across multiple plants with real-time AI insights, seamless SAP integration, and predictive analytics for enterprise-scale operations.</p>
+            <button class="btn btn-primary" onclick="showDemo()">🔍 Explore Live Demo</button>
+            <a href="https://github.com/xLinosllc/ai-inventory-platform" class="btn btn-secondary">📂 View on GitHub</a>
+        </div>
+    </section>
 
-        const AIInventoryDemo = () => {
-            const [activeFeature, setActiveFeature] = useState(0);
-            const [isVisible, setIsVisible] = useState(false);
-
-            useEffect(() => {
-                setIsVisible(true);
-                const interval = setInterval(() => {
-                    setActiveFeature(prev => (prev + 1) % 3);
-                }, 3000);
-                return () => clearInterval(interval);
-            }, []);
-
-            const features = [
-                {
-                    icon: Warehouse,
-                    title: "Multi-Plant Visibility",
-                    description: "Monitor inventory across Dallas Manufacturing, Chicago Distribution, Phoenix Assembly, and Atlanta Warehouse from a unified dashboard.",
-                    metrics: "4 Plants • Real-time Sync • 1,247 SKUs"
-                },
-                {
-                    icon: Brain,
-                    title: "AI-Powered Forecasting",
-                    description: "Advanced machine learning models predict demand with 87-96% accuracy using LSTM Neural Networks and competitive intelligence.",
-                    metrics: "96% Accuracy • 30-day Horizon • Auto-optimization"
-                },
-                {
-                    icon: RotateCcw,
-                    title: "Enterprise Integration",
-                    description: "Seamless real-time synchronization with SAP S/4HANA, Commerce Cloud, and legacy inventory management systems.",
-                    metrics: "SAP S/4HANA • Commerce Cloud • Legacy APIs"
-                }
-            ];
-
-            const insights = [
-                { type: 'optimization', message: 'Dallas plant: Reduce safety stock by 15%', confidence: 88 },
-                { type: 'forecast', message: 'iPhone demand spike predicted (+40%)', confidence: 94 },
-                { type: 'anomaly', message: 'Phoenix: Mouse consumption 230% above normal', confidence: 96 },
-                { type: 'reorder', message: 'USB-C Hub reorder recommended (400 units)', confidence: 91 }
-            ];
-
-            const plants = [
-                { name: 'Dallas Manufacturing', type: 'Manufacturing', items: 342, status: 'healthy' },
-                { name: 'Chicago Distribution', type: 'Distribution', items: 298, status: 'healthy' },
-                { name: 'Phoenix Assembly', type: 'Assembly', items: 156, status: 'warning' },
-                { name: 'Atlanta Warehouse', type: 'Warehouse', items: 451, status: 'healthy' }
-            ];
-
-            return (
-                <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-                    {/* Hero Section */}
-                    <div className="relative overflow-hidden bg-white">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                            <div className="text-center">
-                                <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                                    <div className="flex items-center justify-center space-x-3 mb-6">
-                                        <div className="flex items-center space-x-2">
-                                            <Warehouse className="h-12 w-12 text-blue-600" />
-                                            <Brain className="h-10 w-10 text-indigo-600" />
-                                        </div>
-                                    </div>
-                                    <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                                        AI-Powered Inventory
-                                        <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"> Platform</span>
-                                    </h1>
-                                    <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                                        Intelligent inventory visibility across multiple plants with real-time AI insights, 
-                                        seamless SAP integration, and predictive analytics for enterprise-scale operations.
-                                    </p>
-                                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                        <button 
-                                            onClick={() => alert('🚀 This is a live demo! The platform showcases AI-powered inventory management with plant-level segregation and SAP integration.')}
-                                            className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center space-x-2"
-                                        >
-                                            <Eye className="h-5 w-5" />
-                                            <span>Explore Live Demo</span>
-                                        </button>
-                                        <a 
-                                            href="https://github.com/xLinosllc/ai-inventory-platform" 
-                                            className="bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-900 transition-colors flex items-center space-x-2"
-                                        >
-                                            <Github className="h-5 w-5" />
-                                            <span>View on GitHub</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Features Section */}
-                    <div className="py-16 bg-white">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="text-center mb-12">
-                                <h2 className="text-3xl font-bold text-gray-900 mb-4">Platform Capabilities</h2>
-                                <p className="text-lg text-gray-600">Enterprise-grade features for modern inventory management</p>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                {features.map((feature, index) => (
-                                    <div 
-                                        key={index}
-                                        className={`feature-card p-8 rounded-xl border-2 transition-all duration-300 ${
-                                            activeFeature === index 
-                                                ? 'border-blue-500 bg-blue-50 shadow-lg' 
-                                                : 'border-gray-200 bg-white hover:border-gray-300'
-                                        }`}
-                                    >
-                                        <div className={`w-16 h-16 rounded-lg flex items-center justify-center mb-6 ${
-                                            activeFeature === index ? 'bg-blue-600' : 'bg-gray-100'
-                                        }`}>
-                                            <feature.icon className={`h-8 w-8 ${
-                                                activeFeature === index ? 'text-white' : 'text-gray-600'
-                                            }`} />
-                                        </div>
-                                        <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                                        <p className="text-gray-600 mb-4">{feature.description}</p>
-                                        <div className="text-sm font-medium text-blue-600">{feature.metrics}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Live Data Section */}
-                    <div className="py-16 bg-gray-50">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                                {/* AI Insights */}
-                                <div className="bg-white p-8 rounded-xl shadow-lg">
-                                    <div className="flex items-center space-x-3 mb-6">
-                                        <Brain className="h-6 w-6 text-indigo-600" />
-                                        <h3 className="text-xl font-semibold text-gray-900">Live AI Insights</h3>
-                                    </div>
-                                    <div className="space-y-4">
-                                        {insights.map((insight, index) => (
-                                            <div key={index} className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg">
-                                                <div className="w-2 h-2 rounded-full bg-indigo-500 mt-2"></div>
-                                                <div className="flex-1">
-                                                    <p className="text-sm text-gray-800 mb-1">{insight.message}</p>
-                                                    <div className="flex items-center space-x-2">
-                                                        <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                                                            {insight.confidence}% confidence
-                                                        </span>
-                                                        <span className="text-xs text-gray-500">{insight.type}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Plant Status */}
-                                <div className="bg-white p-8 rounded-xl shadow-lg">
-                                    <div className="flex items-center space-x-3 mb-6">
-                                        <MapPin className="h-6 w-6 text-blue-600" />
-                                        <h3 className="text-xl font-semibold text-gray-900">Plant Network Status</h3>
-                                    </div>
-                                    <div className="space-y-4">
-                                        {plants.map((plant, index) => (
-                                            <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                                                <div className="flex items-center space-x-3">
-                                                    <Warehouse className="h-5 w-5 text-gray-600" />
-                                                    <div>
-                                                        <p className="font-medium text-gray-900">{plant.name}</p>
-                                                        <p className="text-sm text-gray-600">{plant.type} • {plant.items} items</p>
-                                                    </div>
-                                                </div>
-                                                <div className={`w-3 h-3 rounded-full ${
-                                                    plant.status === 'healthy' ? 'bg-green-500' : 'bg-yellow-500'
-                                                }`}></div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Technical Specs */}
-                    <div className="py-16 bg-white">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="text-center mb-12">
-                                <h2 className="text-3xl font-bold text-gray-900 mb-4">Technical Excellence</h2>
-                                <p className="text-lg text-gray-600">Built with modern technologies for enterprise performance</p>
-                            </div>
-                            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                                {[
-                                    { name: 'React 18', desc: 'Modern UI' },
-                                    { name: 'TypeScript', desc: 'Type Safety' },
-                                    { name: 'AI/ML', desc: 'Smart Predictions' },
-                                    { name: 'SAP S/4HANA', desc: 'ERP Integration' },
-                                    { name: 'Real-time', desc: 'Live Updates' },
-                                    { name: 'Enterprise', desc: 'Scalable' }
-                                ].map((tech, index) => (
-                                    <div key={index} className="text-center">
-                                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mx-auto mb-3">
-                                            <CheckCircle className="h-8 w-8 text-white" />
-                                        </div>
-                                        <h4 className="font-semibold text-gray-900">{tech.name}</h4>
-                                        <p className="text-sm text-gray-600">{tech.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* CTA Section */}
-                    <div className="py-16 bg-gradient-to-r from-blue-600 to-indigo-700">
-                        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-                            <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Inventory Management?</h2>
-                            <p className="text-xl text-blue-100 mb-8">
-                                Experience the power of AI-driven inventory optimization across your entire plant network.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button 
-                                    onClick={() => alert('🎯 This demo showcases a complete AI-powered inventory platform. Ready for production deployment!')}
-                                    className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2"
-                                >
-                                    <TrendingUp className="h-5 w-5" />
-                                    <span>Get Started</span>
-                                </button>
-                                <a 
-                                    href="https://github.com/xLinosllc/ai-inventory-platform" 
-                                    className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors flex items-center justify-center space-x-2"
-                                >
-                                    <Star className="h-5 w-5" />
-                                    <span>Star on GitHub</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Footer */}
-                    <footer className="bg-gray-900 text-white py-8">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                            <p className="text-gray-400">
-                                © 2024 AI Inventory Platform. Built with ❤️ using React, TypeScript, and AI/ML technologies.
-                            </p>
-                        </div>
-                    </footer>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1,247</div>
+                    <div class="stat-label">Total SKUs</div>
                 </div>
-            );
-        };
+                <div class="stat-card">
+                    <div class="stat-number">96%</div>
+                    <div class="stat-label">AI Accuracy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Plant Locations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$2.1M</div>
+                    <div class="stat-label">Inventory Value</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        ReactDOM.render(React.createElement(AIInventoryDemo), document.getElementById('root'));
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Platform Capabilities</h2>
+            <p class="features-subtitle">Enterprise-grade features for modern inventory management</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏭</div>
+                    <h3>Multi-Plant Visibility</h3>
+                    <p>Monitor inventory across Dallas Manufacturing, Chicago Distribution, Phoenix Assembly, and Atlanta Warehouse from a unified dashboard.</p>
+                    <div class="feature-metrics">4 Plants • Real-time Sync • 1,247 SKUs</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI-Powered Forecasting</h3>
+                    <p>Advanced machine learning models predict demand with 87-96% accuracy using LSTM Neural Networks and competitive intelligence.</p>
+                    <div class="feature-metrics">96% Accuracy • 30-day Horizon • Auto-optimization</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Enterprise Integration</h3>
+                    <p>Seamless real-time synchronization with SAP S/4HANA, Commerce Cloud, and legacy inventory management systems.</p>
+                    <div class="feature-metrics">SAP S/4HANA • Commerce Cloud • Legacy APIs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Insights Section -->
+    <section class="insights">
+        <div class="container">
+            <h2>Live AI Insights & Plant Status</h2>
+            <div class="insights-grid">
+                <!-- AI Insights Panel -->
+                <div class="insight-panel">
+                    <div class="insight-header">
+                        <div class="insight-icon">🧠</div>
+                        <div class="insight-title">AI-Powered Insights</div>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-message">Dallas plant: Reduce safety stock by 15%</div>
+                        <span class="insight-confidence">88% confidence</span>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-message">iPhone demand spike predicted (+40%)</div>
+                        <span class="insight-confidence">94% confidence</span>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-message">Phoenix: Mouse consumption 230% above normal</div>
+                        <span class="insight-confidence">96% confidence</span>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-message">USB-C Hub reorder recommended (400 units)</div>
+                        <span class="insight-confidence">91% confidence</span>
+                    </div>
+                </div>
+
+                <!-- Plant Status Panel -->
+                <div class="insight-panel">
+                    <div class="insight-header">
+                        <div class="insight-icon">📍</div>
+                        <div class="insight-title">Plant Network Status</div>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-message"><strong>Dallas Manufacturing</strong><br>Manufacturing • 342 items</div>
+                        <span class="insight-confidence">✅ Healthy</span>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-message"><strong>Chicago Distribution</strong><br>Distribution • 298 items</div>
+                        <span class="insight-confidence">✅ Healthy</span>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-message"><strong>Phoenix Assembly</strong><br>Assembly • 156 items</div>
+                        <span class="insight-confidence">⚠️ Warning</span>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-message"><strong>Atlanta Warehouse</strong><br>Warehouse • 451 items</div>
+                        <span class="insight-confidence">✅ Healthy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Inventory Management?</h2>
+            <p>Experience the power of AI-driven inventory optimization across your entire plant network.</p>
+            <button class="btn btn-primary" onclick="showDemo()" style="background: white; color: #667eea;">🎯 Get Started</button>
+            <a href="https://github.com/xLinosllc/ai-inventory-platform" class="btn btn-secondary" style="border: 2px solid white; background: transparent;">⭐ Star on GitHub</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 AI Inventory Platform by xLinosllc. Built with ❤️ using modern web technologies.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showDemo() {
+            alert('🚀 This is a live demo showcasing AI-powered inventory management!\n\n✅ Multi-plant visibility\n✅ 96% AI prediction accuracy\n✅ Real-time SAP integration\n✅ Enterprise-grade features\n\nReady for production deployment!');
+        }
+        
+        // Simple animation for feature cards
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.feature-card, .stat-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card, .stat-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+        });
     </script>
 </body>
 </html>
